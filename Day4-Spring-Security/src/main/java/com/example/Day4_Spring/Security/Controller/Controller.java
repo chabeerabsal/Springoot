@@ -17,6 +17,6 @@ public class Controller {
     }
     @GetMapping("/admin")
     public String admin(){
-        return "This is admin webside";
+        return "This is admin websidecd";
     }
 }
