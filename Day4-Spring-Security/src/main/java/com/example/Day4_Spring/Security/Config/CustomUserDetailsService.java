@@ -30,6 +30,7 @@ import org.springframework.stereotype.Service;
                     .password(user.getPassword())
                     .roles(user.getRole().replace("ROLE_", ""))
                     .build();
+
         }
 
         @Bean
