@@ -41,6 +41,7 @@ import org.springframework.stereotype.Service;
         @Bean
         public static PasswordEncoder passwordEncoder() {
             return NoOpPasswordEncoder.getInstance();
+
             // NOT SAFE — for practice only
         }
     }
