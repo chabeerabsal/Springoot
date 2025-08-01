@@ -42,6 +42,7 @@ import org.springframework.stereotype.Service;
 
         public static PasswordEncoder passwordEncoder() {
             return NoOpPasswordEncoder.getInstance();
+
         }
     }
 
