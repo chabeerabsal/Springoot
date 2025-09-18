@@ -1,5 +1,6 @@
 package com.example.OnetoOne.Entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -17,6 +18,7 @@ public class AddresName {
     private String address;
     private String city;
     @OneToOne(mappedBy = "addressName",cascade = CascadeType.ALL)
+    @JsonBackReference
     private  User user;
 
 

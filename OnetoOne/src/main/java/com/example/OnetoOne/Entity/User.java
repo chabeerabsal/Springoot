@@ -1,5 +1,6 @@
 package com.example.OnetoOne.Entity;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -17,6 +18,7 @@ public class User {
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "addressName_id",referencedColumnName = "id")
+    @JsonManagedReference
     AddresName addressName;
 
     public void setAddressName(AddresName addressName) {
