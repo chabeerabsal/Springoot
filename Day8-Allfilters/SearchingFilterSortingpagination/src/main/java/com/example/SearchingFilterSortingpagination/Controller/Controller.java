@@ -30,5 +30,6 @@ public class Controller {
     public ResponseEntity<Products> AddProducts(@RequestBody Products products) {
         productsService.postProducts(products);
         return ResponseEntity.ok(products);
+
     }
 }
