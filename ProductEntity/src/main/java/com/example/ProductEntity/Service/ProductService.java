@@ -4,6 +4,7 @@ import com.example.ProductEntity.Modellor.ProductCategory;
 import com.example.ProductEntity.Modellor.Products;
 import com.example.ProductEntity.Repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
@@ -37,5 +38,14 @@ public class ProductService {
 
     public List<Products> findAll() {
         return productRepository.findAll();
+    }
+
+    public List<Products> searchbyKeyword(String search) {
+        return productRepository.findBykeyword(search);
+    }
+
+    public void sortMethod(String sort, String sortdir) {
+        //Sort sorting= Sort.unsorted();
+        productRepository.findByUserSort(sort,sortdir);
     }
 }

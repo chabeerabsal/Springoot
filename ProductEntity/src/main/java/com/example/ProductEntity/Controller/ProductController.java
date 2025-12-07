@@ -52,4 +52,15 @@ public class ProductController {
       return ResponseEntity.ok().body(product);
     }
 
+    @GetMapping("/search")
+    public ResponseEntity<?> getProducts(@RequestParam String search) {
+       List<Products> products=productService.searchbyKeyword(search);
+       return ResponseEntity.ok().body(products);
+    }
+
+    @GetMapping("/sort")
+    public ResponseEntity<?> getProducts(@RequestParam String sort, @RequestParam String sortdir) {
+       productService.sortMethod(sort,sortdir);
+    }
+
 }

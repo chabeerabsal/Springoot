@@ -1,12 +1,17 @@
 package com.example.ProductEntity.Modellor;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.example.ProductEntity.DTO.CategoryDTO;
+import com.fasterxml.jackson.annotation.*;
 import jakarta.persistence.*;
 import lombok.Data;
 import org.hibernate.annotations.AnyDiscriminatorImplicitValues;
 
 @Entity
 @Data
+@JsonIdentityInfo(
+    generator= ObjectIdGenerators.PropertyGenerator.class,
+    property="id"
+)
 public class  Products {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
@@ -17,8 +22,9 @@ public class  Products {
     Integer productQuantity;
      @ManyToOne
     @JoinColumn(name="produceCategory",referencedColumnName ="id")
-    @JsonBackReference
     ProductCategory productCategory;
+
+
 
 
 }
