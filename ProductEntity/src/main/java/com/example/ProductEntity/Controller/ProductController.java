@@ -60,7 +60,8 @@ public class ProductController {
 
     @GetMapping("/sort")
     public ResponseEntity<?> getProducts(@RequestParam String sort, @RequestParam String sortdir) {
-       productService.sortMethod(sort,sortdir);
+       List<Products> products=productService.sortMethod(sort,sortdir);
+       return  ResponseEntity.ok().body(products);
     }
 
 }

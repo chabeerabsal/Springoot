@@ -15,8 +15,12 @@ public class ProductCategoryService {
     @Autowired
     ProductCategoryRepository productCategoryRepository;
     public Optional<ProductCategory> save(ProductCategory productCategory) {
-        ProductCategory products= productCategoryRepository.save(productCategory);
-        return Optional.of(products);
+       List<Products> products =productCategory.getProducts();
+       for(Products product:products){
+           product.setProductCategory(productCategory);
+       }
+        ProductCategory product= productCategoryRepository.save(productCategory);
+        return Optional.of(product);
     }
 
 

@@ -44,8 +44,9 @@ public class ProductService {
         return productRepository.findBykeyword(search);
     }
 
-    public void sortMethod(String sort, String sortdir) {
+    public List<Products> sortMethod(String sort, String sortdir) {
         //Sort sorting= Sort.unsorted();
-        productRepository.findByUserSort(sort,sortdir);
+       List<Products> products= productRepository.findByUserSort(sort,sortdir);
+       return products;
     }
 }

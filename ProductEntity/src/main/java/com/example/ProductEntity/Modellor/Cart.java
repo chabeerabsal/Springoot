@@ -22,4 +22,6 @@ public class Cart {
 
     @OneToMany()
     private List<CartItems> cardItems;
+
+    private Double totalPrice;
 }
