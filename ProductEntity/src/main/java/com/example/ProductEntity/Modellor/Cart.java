@@ -1,9 +1,12 @@
 package com.example.ProductEntity.Modellor;
 
+import com.example.ProductEntity.Modellor.CartItems;
+import com.example.ProductEntity.Modellor.User;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import jakarta.persistence.*;
 import lombok.Data;
+
 import java.util.List;
 
 @Entity
@@ -13,14 +16,16 @@ import java.util.List;
         property="id"
 )
 public class Cart {
+
     @Id
-    private int id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
 
     @OneToOne
-    @JoinColumn(name="users",referencedColumnName = "id")
+    @JoinColumn(name="user_id")
     private User user;
 
-    @OneToMany()
+    @OneToMany(mappedBy = "cart", cascade = CascadeType.ALL)
     private List<CartItems> cardItems;
 
     private Double totalPrice;

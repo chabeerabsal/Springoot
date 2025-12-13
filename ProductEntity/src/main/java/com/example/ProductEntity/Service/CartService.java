@@ -10,11 +10,13 @@ import com.example.ProductEntity.Modellor.User;
 import com.example.ProductEntity.Repository.CardRepo;
 import com.example.ProductEntity.Repository.CartItemsRepository;
 import com.example.ProductEntity.Repository.ProductRepository;
+import com.example.ProductEntity.Repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class CartService {
@@ -27,6 +29,9 @@ public class CartService {
 
     @Autowired
     private CartItemsRepository cartItemRepository;
+
+    @Autowired
+    private UserRepository userRepository;
 
     public CartResponseDTO addToCart(User user, AddtoCartDTO request) {
 
@@ -111,5 +116,14 @@ public class CartService {
         response.setItems(itemDetailsList);
 
         return response;
+    }
+    public Optional<Cart> getCart(int userId) {
+
+        // 1. Get the user
+        User user = userRepository.findById(userId)
+                .orElseThrow(() -> new RuntimeException("User not found"));
+
+        // 2. Find cart by user
+        return cartRepository.findByUser(user);
     }
 }

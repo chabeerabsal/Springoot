@@ -1,5 +1,6 @@
 package com.example.ProductEntity.Service;
 
+import com.example.ProductEntity.Modellor.Cart;
 import com.example.ProductEntity.Modellor.User;
 import com.example.ProductEntity.Repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,4 +26,6 @@ public class UserService {
     public List<User> findAll() {
         return userRepository.findAll();
     }
+
+
 }
