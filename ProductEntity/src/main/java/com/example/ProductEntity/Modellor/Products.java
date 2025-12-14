@@ -8,10 +8,7 @@ import org.hibernate.annotations.AnyDiscriminatorImplicitValues;
 
 @Entity
 @Data
-@JsonIdentityInfo(
-    generator= ObjectIdGenerators.PropertyGenerator.class,
-    property="id"
-)
+
 public class  Products {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
@@ -21,7 +18,8 @@ public class  Products {
     Double productPrice;
     Integer productQuantity;
      @ManyToOne
-    @JoinColumn(name="produceCategory",referencedColumnName ="id")
+    @JoinColumn(name="productCategory",referencedColumnName ="id")
+    @JsonBackReference
     ProductCategory productCategory;
 
 

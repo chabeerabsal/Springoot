@@ -10,17 +10,14 @@ import java.util.List;
 
 @Entity
 @Data
-@JsonIdentityInfo(
-        generator= ObjectIdGenerators.PropertyGenerator.class,
-        property="id"
-)
+
 public class ProductCategory {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private Long id;
     private String name;
     @OneToMany(mappedBy="productCategory",cascade=CascadeType.ALL,fetch=FetchType.LAZY,orphanRemoval=true)
-    @JsonIgnore
+    @JsonManagedReference
     List<Products> products= new ArrayList<>();
     public CategoryDTO setDTO()
     {

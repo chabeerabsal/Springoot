@@ -17,5 +17,7 @@ public interface CardRepo extends JpaRepository<Cart,Integer> {
 
     Optional<Cart> findByUser(User user);
 
+    Cart findByUserId(Integer userId);
+
     //Optional<?> findBycart(Object o);
 }
