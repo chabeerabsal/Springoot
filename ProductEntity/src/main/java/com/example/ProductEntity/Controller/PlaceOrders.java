@@ -26,6 +26,7 @@ public class PlaceOrders {
     public Payment makePayment(@PathVariable Long orderId,
                                @RequestParam String method) {
         return paymentService.processPayment(orderId, method);
+        
     }
 
 }
