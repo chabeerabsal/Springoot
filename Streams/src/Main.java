@@ -45,12 +45,13 @@ public class Main {
                 new Employee("Alice",1000),
                 new Employee("Bob",2000),
                 new Employee("Alice",2000),
-                new Employee("Alice",3000)
+                new Employee("Alice",3000),
+                new Employee("Alice",2500)
                 )
         );
 
-       List<Integer>s= employeeList.stream().map(Employee::getSalary).sorted(Comparator.reverseOrder()).distinct().peek(System.out::println).toList();
-       System.out.println(s.get(1));
+       Optional<Integer>s= employeeList.stream().map(Employee::getSalary).sorted(Comparator.reverseOrder()).distinct().skip(1).findFirst();
+       s.ifPresent(System.out::println);
 
     }
 
